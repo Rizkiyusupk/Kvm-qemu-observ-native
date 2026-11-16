@@ -1,0 +1,6 @@
+- name: install loki
+  hosts: masters
+  become: yes
+  tasks:
+    - name:
+      
