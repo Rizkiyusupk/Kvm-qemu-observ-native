@@ -31,19 +31,19 @@ dan yang kedua yaitu ansible
 k8s/
 ├── ansible.cfg
 ├── inventory
-├── playbook-allow-port.yaml
-├── playbook-ip.yaml
-├── playbook-install-java-baremetal.yaml
-├── playbook-install-jenkins-baremetal.yaml
-├── playbook-install-kubectl-baremetal.yaml
-├── playbook-join.yaml
-├── playbook-kubernetes.yaml
-├── playbook-pkg.yaml
-├── playbook-swap.yaml
-├── playbook-config.yaml
-├── playbook-install-terraform-bare-metal.yaml
-├── observ.yaml
-├── observ_2.yaml
+├── playbook-allow-port-native.yaml
+├── playbook-ip-native.yaml
+├── playbook-install-java-baremetal-native.yaml
+├── playbook-install-jenkins-baremetal-native.yaml
+├── playbook-install-kubectl-baremetal-native.yaml
+├── playbook-join-native.yaml
+├── playbook-kubernetes-native.yaml
+├── playbook-pkg-native.yaml
+├── playbook-swap-native.yaml
+├── playbook-config-native.yaml
+├── playbook-install-terraform-bare-metal-native.yaml
+├── observ-native.yaml
+├── observ_2-native.yaml
 ```
 
 yang terakhir di cluster
@@ -83,3 +83,11 @@ cluster-side/
 - **Prometheus** : v3.22.0
 - **Node Exporter** : v1.12.0
 - **Promtail** : 6.17.1
+
+### Catatan Kompatibilitas
+Dites pada: VM Ubuntu 22.04 (jammy, dari image cloud) dan node Jenkins Ubuntu 25.04.
+Kalau memakai rilis Ubuntu lain, alur playbook dan module-nya sama. Yang perlu
+disesuaikan hanya yang bergantung pada codename rilis:
+- HashiCorp: ubah `hashicorp_suite` bila suite rilis belum ada di repo mereka.
+- Docker: pastikan `download.docker.com` sudah punya suite untuk rilis tersebut.
+- Terraform: ganti URL image di `prep-vm.tf`.
