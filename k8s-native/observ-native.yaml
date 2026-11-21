@@ -14,7 +14,7 @@
       args:
         creates: /usr/local/bin/helm
       environment:
-        DESIRED_VERSION: "v3.22.0"
+        DESIRED_VERSION: "v3.21.0"
     - name: Add a repository
       kubernetes.core.helm_repository:
         name: prometheus-community
