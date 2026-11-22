@@ -5,9 +5,9 @@ itu masih sama saja dengan projek sebelumnya,oke langsung saja masuk ke pembahas
 
 | Node        | CPU     | RAM  | Storage | Network                             |
 |-------------|---------|------|---------|------------------------------------ |
-| **Master**  | 2 cores | 2GB  | 10GB    | 1 Adapters   ( Static Ip )          |
-| **Worker 1**| 2 cores | 2GB  | 10GB    | 1 Adapters   ( Static Ip )          |
-| **Worker 2**| 2 cores | 2GB  | 10GB    | 1 Adapters   ( Static Ip )          |
+| **Master**  | 2 cores | 2GB  | 10GB    | 1 Adapters   ( DHCP Ip )            |
+| **Worker 1**| 2 cores | 2GB  | 10GB    | 1 Adapters   ( DHCP Ip )            |
+| **Worker 2**| 2 cores | 2GB  | 10GB    | 1 Adapters   ( DHCP Ip )            |
 | **Jenkins** | 7 cores | 7GB  | 240GB   |                Wlan                 |
 
 ![scdbijcf](/assets/obersv.png)
@@ -91,3 +91,11 @@ disesuaikan hanya yang bergantung pada codename rilis:
 - HashiCorp: ubah `hashicorp_suite` bila suite rilis belum ada di repo mereka.
 - Docker: pastikan `download.docker.com` sudah punya suite untuk rilis tersebut.
 - Terraform: ganti URL image di `prep-vm.tf`.
+
+### prerequisites 
+Oke sebelum masuk ke setup saya harapkan anda semua membaca ini,semua kondisi harus memenuhi 
+
+ - **K8s sudah terinstall di node**
+ - **Java,Jenkins,Terraform,Kubectl harus terinstall di laptop 2**
+
+semua hal yang ada diatas adalah syarta wajib untuk melanjutkan ke setup,baca disini jika belum memenuhi syarat [ini](https://github.com/Rizkiyusupk/Rizkiyusupk.github.io/blob/master/_posts/2026-06-22-kvm.md)
