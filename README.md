@@ -1,3 +1,4 @@
+### Overview
 Masuk ke tahap lanjutan dari projek sebelumnya jika di projek sebelumnya itu belum menambahkan observ tools untuk monitoring dari infrastructure yang sudah di bangun sekarang saya akan membahas
 cara untuk menambahkan stack observ tools seperti prometheus,loki,grafana,dan alertmanager.Karena kali ini hanya menambahkan dan mengintegrasikan observ tools jadinya untuk infrastructure 
 itu masih sama saja dengan projek sebelumnya,oke langsung saja masuk ke pembahasaanya 
@@ -5,9 +6,9 @@ itu masih sama saja dengan projek sebelumnya,oke langsung saja masuk ke pembahas
 
 | Node        | CPU     | RAM  | Storage | Network                             |
 |-------------|---------|------|---------|------------------------------------ |
-| **Master**  | 2 cores | 2GB  | 10GB    | 1 Adapters   ( Static Ip )          |
-| **Worker 1**| 2 cores | 2GB  | 10GB    | 1 Adapters   ( Static Ip )          |
-| **Worker 2**| 2 cores | 2GB  | 10GB    | 1 Adapters   ( Static Ip )          |
+| **Master**  | 2 cores | 2GB  | 10GB    | 1 Adapters   ( DHCP Ip )            |
+| **Worker 1**| 2 cores | 2GB  | 10GB    | 1 Adapters   ( DHCP Ip )            |
+| **Worker 2**| 2 cores | 2GB  | 10GB    | 1 Adapters   ( DHCP Ip )            |
 | **Jenkins** | 7 cores | 7GB  | 240GB   |                Wlan                 |
 
 ![scdbijcf](/assets/obersv.png)
@@ -72,17 +73,17 @@ cluster-side/
 - **KVM** : 8.2.2
 - **QEMU** : 8.2.2
 - **Libvirt** : 10.0.0
-- **Alertmanager** : v0.33.1
-- **Loki** : 6.55.0
-- **Loki Canary** : 6.55.0
+- **Alertmanager** : v0.34.0
+- **Loki** : 3.6.11
+- **Loki Canary** : 3.6.12
 - **Loki Gateway (nginx)** : 1.29-alpine
 - **Grafana** : 13.1.0
-- **Prometheus Operator** : v0.92.1
-- **Prometheus Config Reloader** : v0.92.1
-- **Kube State Metrics** : v2.19.1
-- **Prometheus** : v3.22.0
+- **Prometheus Operator** : v0.93.1
+- **Prometheus Config Reloader** : v0.93.1
+- **Kube State Metrics** : v2.20.0
+- **Prometheus** : v3.14.1
 - **Node Exporter** : v1.12.0
-- **Promtail** : 6.17.1
+- **Promtail** : 3.5.1
 
 ### Catatan Kompatibilitas
 Dites pada: VM Ubuntu 22.04 (jammy, dari image cloud) dan node Jenkins Ubuntu 25.04.
@@ -91,3 +92,14 @@ disesuaikan hanya yang bergantung pada codename rilis:
 - HashiCorp: ubah `hashicorp_suite` bila suite rilis belum ada di repo mereka.
 - Docker: pastikan `download.docker.com` sudah punya suite untuk rilis tersebut.
 - Terraform: ganti URL image di `prep-vm.tf`.
+
+### prerequisites 
+Oke sebelum masuk ke setup saya harapkan anda semua membaca ini,semua kondisi harus memenuhi 
+
+ - **K8s sudah terinstall di node**
+ - **Java,Jenkins,Terraform,Kubectl harus terinstall di laptop 2**
+ - **kubernetes.core**
+ - **community.general**
+ - **ansible.posix**
+
+semua hal yang ada diatas adalah syarta wajib untuk melanjutkan ke setup untuk ansible collection bisa di install terlebih dahulu atau bisa melakukan installasi ansible lewat pip,baca disini jika belum memenuhi syarat [ini](https://github.com/Rizkiyusupk/Rizkiyusupk.github.io/blob/master/_posts/2026-06-22-kvm.md)
